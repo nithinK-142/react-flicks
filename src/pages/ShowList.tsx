@@ -42,7 +42,7 @@ const ShowList: React.FC = () => {
                 </button>
                 <Link
                   to={`/shows/${show.id}`}
-                  className="inline-flex items-center justify-center w-1/2 px-2 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="inline-flex items-center justify-center w-1/2 px-2 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   Book Now
                   <svg
@@ -68,7 +68,7 @@ const ShowList: React.FC = () => {
       </ul>
 
       <div className="flex">
-        <div className="fixed w-1/3 h-full overflow-hidden bg-gray-600">
+        <div className="fixed w-1/3 overflow-hidden bg-gray-600">
           <ShowInfo showId={showId} />
         </div>
       </div>

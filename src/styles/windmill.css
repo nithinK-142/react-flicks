@@ -1,0 +1,48 @@
+.dot-windmill {
+  position: relative;
+  top: -10px;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  background-color: #9880ff;
+  color: #9880ff;
+  transform-origin: 8px 24px;
+  animation: dot-windmill 2s infinite linear;
+}
+
+.dot-windmill::before,
+.dot-windmill::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+}
+
+.dot-windmill::before {
+  left: -13.86px;
+  top: 24px;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  background-color: #9880ff;
+  color: #9880ff;
+}
+
+.dot-windmill::after {
+  left: 13.86px;
+  top: 24px;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  background-color: #9880ff;
+  color: #9880ff;
+}
+
+@keyframes dot-windmill {
+  0% {
+    transform: rotateZ(0deg) translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: rotateZ(720deg) translate3d(0, 0, 0);
+  }
+}

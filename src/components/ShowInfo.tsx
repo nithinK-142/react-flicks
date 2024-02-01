@@ -10,11 +10,10 @@ const ShowInfo = ({ showId }: { showId: number }) => {
   );
   const show = shows[0];
   if (loading) return <Loading />;
-  console.log(show.score);
   if (!show) return <NotFound />;
 
   return (
-    <div className="flex items-start justify-between h-full bg-white border border-gray-200 rounded-md shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="flex items-start justify-between min-h-[80vh] bg-white border border-gray-200 rounded-md shadow dark:bg-gray-800 dark:border-gray-700">
       <div className="flex flex-col p-5 space-y-3">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {show.name}

@@ -6,7 +6,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import "./index.css";
+import './styles/index.css'
 import { Layout } from "./layout.tsx";
 import ShowList from "./pages/ShowList.tsx";
 import BookShow from "./pages/BookShow.tsx";
