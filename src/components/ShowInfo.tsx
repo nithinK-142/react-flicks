@@ -19,9 +19,14 @@ const ShowInfo = ({ showId }: { showId: number }) => {
           {show.name}
         </h5>
         {show.network?.name && (
-          <p>
+          <p className="flex space-x-1">
             Network:{" "}
-            <span className="opacity-90">{show.network.country.code}</span>{" "}
+            <span className="pl-1">
+              <img
+                src={`https://flagsapi.com/${show.network.country.code}/flat/64.png`}
+                className="h-6 "
+              />
+            </span>
             <span className="text-green-400">{show.network.name}</span>{" "}
           </p>
         )}
