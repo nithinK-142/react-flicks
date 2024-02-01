@@ -1,8 +1,8 @@
 import "@/styles/windmill.css";
 
-const Loading = () => {
+const Loading = ({ bg }: { bg?: string }) => {
   return (
-    <div className="flex items-center justify-center h-[85vh] dark:bg-gray-800">
+    <div className={`flex items-center justify-center h-[85vh] dark:${bg}`}>
       <div className="col-3">
         <div className="snippet" data-title="dot-windmill">
           <div className="stage">

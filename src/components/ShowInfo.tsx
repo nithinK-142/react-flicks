@@ -9,7 +9,7 @@ const ShowInfo = ({ showId }: { showId: number }) => {
     `https://api.tvmaze.com/shows/${showId}`
   );
   const show = shows[0];
-  if (loading) return <Loading />;
+  if (loading) return <Loading bg="bg-gray-800" />;
   if (!show) return <NotFound />;
 
   return (
