@@ -1,18 +1,51 @@
 import useFetchShows from "@/hooks/useFetchShows";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import NotFound from "./NotFound";
 import Loading from "./Loading";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
-// import FormPopup from "@/components/FormPopup";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+
+type UserDataType = {
+  name: string;
+  email: string;
+  seats: string;
+  date: string;
+};
 
 const ShowInfo: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { shows, loading } = useFetchShows(
     `https://api.tvmaze.com/shows/${id}`
   );
+  const [isOpen, setIsOpen] = useState(false);
+  const [isFormFilled, setIsFormFilled] = useState(false);
+  const [userData, setUserData] = useState<UserDataType>({
+    name: "",
+    email: "",
+    seats: "",
+    date: "",
+  });
+
+  useEffect(() => {
+    const { name, email, date } = userData;
+    if (name.trim() !== "" && email.trim() !== "" && date.trim() !== "")
+      setIsFormFilled(true);
+    else setIsFormFilled(false);
+  }, [userData]);
+
+  const handleClose = () => {
+    if (!isFormFilled) return toast.error("Filds must not be empty!");
+    setIsOpen(false);
+    toast.success("Payment successfull!");
+    localStorage.setItem("userData", JSON.stringify(userData));
+    <Loading />;
+    setTimeout(() => navigate("/"), 500);
+  };
   const show = shows[0];
 
+  const navigate = useNavigate();
   if (loading) return <Loading />;
   if (id?.length !== 5 || !show) return <NotFound />;
 
@@ -79,12 +112,10 @@ const ShowInfo: React.FC = () => {
           </p>
 
           <Popup
-            trigger={
-              <button className="inline-flex items-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                Book Now!
-              </button>
-            }
+            open={isOpen}
+            onClose={handleClose}
             modal
+            closeOnDocumentClick={false}
           >
             <div className="w-full bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
               <div className="flex justify-center">
@@ -109,6 +140,9 @@ const ShowInfo: React.FC = () => {
                       </label>
                       <input
                         type="text"
+                        onChange={(e) =>
+                          setUserData({ ...userData, name: e.target.value })
+                        }
                         name="name"
                         id="name"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -125,6 +159,9 @@ const ShowInfo: React.FC = () => {
                       </label>
                       <input
                         type="email"
+                        onChange={(e) =>
+                          setUserData({ ...userData, email: e.target.value })
+                        }
                         name="email"
                         id="email"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -142,6 +179,9 @@ const ShowInfo: React.FC = () => {
                       </label>
                       <input
                         type="number"
+                        onChange={(e) =>
+                          setUserData({ ...userData, seats: e.target.value })
+                        }
                         name="seat"
                         id="seat"
                         min="1"
@@ -160,6 +200,9 @@ const ShowInfo: React.FC = () => {
                       </label>
                       <input
                         type="date"
+                        onChange={(e) =>
+                          setUserData({ ...userData, date: e.target.value })
+                        }
                         name="date"
                         id="date"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -188,7 +231,9 @@ const ShowInfo: React.FC = () => {
                   </div>
                   <button
                     type="submit"
-                    className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    onClick={handleClose}
+                    // disabled={!isFormFilled}
+                    className="w-full text-white cursor-pointer bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
                     Pay
                   </button>
@@ -205,6 +250,12 @@ const ShowInfo: React.FC = () => {
               </div>
             </div>
           </Popup>
+          <button
+            onClick={() => setIsOpen(true)}
+            className="inline-flex items-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Book Now!
+          </button>
         </div>
       </div>
     </>

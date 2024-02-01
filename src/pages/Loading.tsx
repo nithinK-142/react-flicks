@@ -2,7 +2,7 @@ import "@/styles/windmill.css";
 
 const Loading = ({ bg }: { bg?: string }) => {
   return (
-    <div className={`flex items-center justify-center h-[85vh] dark:${bg}`}>
+    <div className={`flex items-center justify-center h-[85vh] z-50 dark:${bg}`}>
       <div className="col-3">
         <div className="snippet" data-title="dot-windmill">
           <div className="stage">
