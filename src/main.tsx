@@ -6,18 +6,16 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import './styles/index.css'
+import "./styles/index.css";
 import { Layout } from "./layout.tsx";
 import ShowList from "./pages/ShowList.tsx";
 import BookShow from "./pages/BookShow.tsx";
 import NotFound from "./pages/NotFound.tsx";
-import Test from "./pages/Test.tsx";
 
 const routes = (
   <Route path="/" element={<Layout />}>
     <Route path="" element={<ShowList />} />
     <Route path="shows/:id" element={<BookShow />} />
-    <Route path="test" element={<Test />} />
     <Route path="*" element={<NotFound />} />
   </Route>
 );
