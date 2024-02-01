@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Kanit:wght@200;300;400;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-[#212121] text-white font-kanit;
+}
+
+p {
+  @apply font-lato;
+}
+
+/* Scrollbar */
+@layer components {
+  /* Scrollbar */
+  .custom-scrollbar {
+    padding-right: 4px;
+    padding-bottom: 4px;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+  }
+
+  /* Works for Chrome, Brave, Edge */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 0.5em;
+  }
+  .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+    border-radius: 100vw;
+    background: gray;
+  }
+
+  /* Scrollbar for Firefox */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+
+  .custom-scrollbar:hover {
+    scrollbar-color: gray #1f1f1f;
+  }
+}
