@@ -11,11 +11,13 @@ import { Layout } from "./layout.tsx";
 import ShowList from "./pages/ShowList.tsx";
 import BookShow from "./pages/BookShow.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import Bookings from "./pages/Bookings.tsx";
 
 const routes = (
   <Route path="/" element={<Layout />}>
     <Route path="" element={<ShowList />} />
     <Route path="shows/:id" element={<BookShow />} />
+    <Route path="bookings" element={<Bookings />} />
     <Route path="*" element={<NotFound />} />
   </Route>
 );

@@ -1,9 +1,14 @@
-import { sanitizedSummary } from "@/utils/utils";
+// Library imports
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
+// Relative imports
 import useFetchShows from "@/hooks/useFetchShows";
 import Loading from "./Loading";
 import ShowInfo from "@/components/ShowInfo";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+
+// Utility imports
+import { sanitizedSummary } from "@/utils/utils";
 
 const ShowList: React.FC = () => {
   const { shows, loading } = useFetchShows(
@@ -14,7 +19,7 @@ const ShowList: React.FC = () => {
   if (loading) return <Loading />;
 
   return (
-    <div className="flex flex-col md:flex-row h-[86vh] custom-scrollbar">
+    <div className="flex flex-col md:flex-row md:h-[86vh] md:custom-scrollbar">
       <ul className="grid w-full h-full grid-cols-1 gap-4 md:w-2/3 custom-scrollbar lg:grid-cols-2">
         {shows.map((show) => (
           <li
@@ -68,7 +73,7 @@ const ShowList: React.FC = () => {
       </ul>
 
       <div className="flex">
-        <div className="fixed w-1/3 overflow-hidden bg-gray-600">
+        <div className="block w-full overflow-hidden bg-gray-600 md:w-1/3 md:fixed">
           <ShowInfo showId={showId} />
         </div>
       </div>
