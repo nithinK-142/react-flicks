@@ -9,6 +9,9 @@ export default {
       fontFamily: {
         lato: ['Lato', 'sans-serif'],
         kanit: ['Kanit', 'sans-serif']
+      },
+      screens:{
+        '3xl': '1620px',
       }
     },
   },

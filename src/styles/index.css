@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Kanit:wght@200;300;400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Kanit:wght@200;300;400;500;600&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  @apply bg-[#212121] text-white font-kanit;
+  @apply bg-[#1e1e1e] text-white font-kanit;
 }
 
 p {
@@ -14,30 +14,38 @@ p {
 
 /* Scrollbar */
 @layer components {
-  /* Scrollbar */
-  .custom-scrollbar {
-    padding-right: 4px;
-    padding-bottom: 4px;
+  .scroller {
     overflow-y: auto;
     scrollbar-gutter: stable;
   }
 
-  /* Works for Chrome, Brave, Edge */
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 0.5em;
+  .scroller::-webkit-scrollbar {
+    width: 0em;
   }
-  .custom-scrollbar:hover::-webkit-scrollbar-thumb {
-    border-radius: 100vw;
-    background: gray;
+  .scroller:hover::-webkit-scrollbar-thumb {
+    background: transparent;
   }
 
-  /* Scrollbar for Firefox */
-  .custom-scrollbar {
+  .floating-scrollbar {
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+  }
+  /* Chrome, Brave, Edge, Safari */
+  .floating-scrollbar::-webkit-scrollbar {
+    width: 0.5em;
+  }
+  .floating-scrollbar:hover::-webkit-scrollbar-thumb {
+    border-radius: 100vw;
+    background: #1f1f1f;
+  }
+
+  /* Firefox */
+  .floating-scrollbar {
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
   }
 
-  .custom-scrollbar:hover {
-    scrollbar-color: gray #1f1f1f;
+  .floating-scrollbar:hover {
+    scrollbar-color: #1f1f1f #1f1f1f;
   }
 }

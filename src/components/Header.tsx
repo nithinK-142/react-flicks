@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 const Header = () => {
   return (
-    <div className="flex items-center justify-between w-full">
+    <div className="h-[8vh] flex items-center justify-between w-full bg-gray-900/40 mb-1">
       <div className="pl-10">
         <Link to={"/"}>
-          <h1 className="my-8 text-3xl font-bold text-center">React Flicks</h1>
+          <h1 className="text-2xl font-semibold tracking-wider text-center">React Flicks</h1>
         </Link>
       </div>
-      <div className="flex space-x-10 pr-52">
+      <div className="flex space-x-10 md:pr-52">
         <Link to={"/"}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
