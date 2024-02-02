@@ -6,49 +6,15 @@ import toast from "react-hot-toast";
 
 // Relative imports
 import useFetchShows from "@/hooks/useFetchShows";
+import { SHOW_URL } from "@/utils/constants";
+import { UserDataType } from "@/utils/types";
 import NotFound from "./NotFound";
 import Loading from "./Loading";
 import "reactjs-popup/dist/index.css";
 
-export type UserDataType = {
-  name: string;
-  email: string;
-  seats: string;
-  date: string;
-};
-
-export type ShowDataType = {
-  image: {
-    medium: string;
-  } | null;
-  showName: string;
-  id: number;
-  network?: {
-    name: string;
-    country: {
-      code: string;
-    };
-  };
-  schedule: {
-    days: string[];
-    time: string;
-  };
-  runtime: number;
-  status: string;
-  type: string;
-  genres: string[];
-  rating: {
-    average: number;
-  };
-  officialSite?: string;
-  language: string;
-};
-
 const ShowInfo: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { shows, loading } = useFetchShows(
-    `https://api.tvmaze.com/shows/${id}`
-  );
+  const { shows, loading } = useFetchShows(SHOW_URL + `${id}`);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isFormFilled, setIsFormFilled] = useState<boolean>(false);
 
@@ -57,33 +23,6 @@ const ShowInfo: React.FC = () => {
     email: "",
     seats: "",
     date: "",
-  });
-
-  const [showData, setShowData] = useState<ShowDataType>({
-    image: {
-      medium: "",
-    },
-    showName: "",
-    id: 0,
-    network: {
-      name: "",
-      country: {
-        code: "",
-      },
-    },
-    schedule: {
-      days: [],
-      time: "",
-    },
-    runtime: 0,
-    status: "",
-    type: "",
-    genres: [],
-    rating: {
-      average: 0,
-    },
-    officialSite: "",
-    language: "",
   });
 
   useEffect(() => {
@@ -104,45 +43,45 @@ const ShowInfo: React.FC = () => {
 
     localStorage.setItem(
       show.id.toString(),
-      JSON.stringify([{ user: userData, show: showData }])
+      JSON.stringify([
+        {
+          username: userData.name,
+          email: userData.email,
+          seats: userData.seats,
+          date: userData.date,
+          image: {
+            medium: show.image?.medium || "",
+          },
+          showName: show.name,
+          id: show.id,
+          network: {
+            name: show.network?.name || "",
+            country: {
+              code: show.network?.country.code || "",
+            },
+          },
+          schedule: {
+            days: show.schedule.days,
+            time: show.schedule.time,
+          },
+          runtime: show.runtime,
+          status: show.status,
+          type: show.type,
+          genres: show.genres,
+          rating: {
+            average: show.rating.average,
+          },
+          officialSite: show.officialSite || "",
+          language: show.language,
+        },
+      ])
     );
 
     navigate("/");
   };
 
-  useEffect(() => {
-    if (show) {
-      setShowData(() => ({
-        image: {
-          medium: show.image?.medium || "",
-        },
-        showName: show.name,
-        id: show.id,
-        network: {
-          name: show.network?.name || "",
-          country: {
-            code: show.network?.country.code || "",
-          },
-        },
-        schedule: {
-          days: show.schedule.days,
-          time: show.schedule.time,
-        },
-        runtime: show.runtime,
-        status: show.status,
-        type: show.type,
-        genres: show.genres,
-        rating: {
-          average: show.rating.average,
-        },
-        officialSite: show.officialSite || "",
-        language: show.language,
-      }));
-    }
-  }, [show]);
-
   if (loading) return <Loading />;
-  if (id?.length !== 5 || !shows) return <NotFound />;
+  if (!shows) return <NotFound />;
 
   return (
     <div className="flex items-start justify-center h-[80vh] bg-white border border-gray-200 rounded-md shadow dark:bg-gray-800 dark:border-gray-700">

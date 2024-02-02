@@ -9,11 +9,10 @@ import ShowInfo from "@/components/ShowInfo";
 
 // Utility imports
 import { sanitizedSummary } from "@/utils/utils";
+import { SHOWS_URL } from "@/utils/constants";
 
 const ShowList: React.FC = () => {
-  const { shows, loading } = useFetchShows(
-    "https://api.tvmaze.com/search/shows?q=all"
-  );
+  const { shows, loading } = useFetchShows(SHOWS_URL);
   const [showId, setShowId] = useState<number>(42181);
 
   if (loading) return <Loading />;

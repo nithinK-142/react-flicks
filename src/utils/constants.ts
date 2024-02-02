@@ -10,3 +10,7 @@ export const showIds = [
   "9526",
   "32110",
 ];
+
+export const SHOWS_URL = "https://api.tvmaze.com/search/shows?q=all";
+
+export const SHOW_URL = "https://api.tvmaze.com/shows/";

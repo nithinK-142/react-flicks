@@ -68,39 +68,33 @@ export type ShowDataType = {
   language: string;
 };
 
-export type BookingDataType = {
-  user: UserDataType;
-  show: ShowDataType;
-};
-
-export type BookingDataArrType = BookingDataType[];
-// export type BookingDataType = {
-//   name: string;
-//   email: string;
-//   seats: string;
-//   date: string;
-//   image: {
-//     medium: string;
-//   } | null;
-//   showName: string;
-//   id: number;
-//   network?: {
-//     name: string;
-//     country: {
-//       code: string;
-//     };
-//   };
-//   schedule: {
-//     days: string[];
-//     time: string;
-//   };
-//   runtime: number;
-//   status: string;
-//   type: string;
-//   genres: string[];
-//   rating: {
-//     average: number;
-//   };
-//   officialSite?: string;
-//   language: string;
-// };
+export type DataType = Array<{
+  username: string;
+  email: string;
+  seats: string;
+  date: string;
+  image: {
+    medium: string;
+  } | null;
+  showName: string;
+  id: number;
+  network?: {
+    name: string;
+    country: {
+      code: string;
+    };
+  };
+  schedule: {
+    days: string[];
+    time: string;
+  };
+  runtime: number;
+  status: string;
+  type: string;
+  genres: string[];
+  rating: {
+    average: number;
+  };
+  officialSite?: string;
+  language: string;
+}>;
