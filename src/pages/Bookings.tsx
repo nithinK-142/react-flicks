@@ -35,7 +35,7 @@ const Bookings = () => {
         {bookings.flat().map((booking, index) => (
           <div
             key={index}
-            className="flex flex-col max-w-sm bg-white border border-gray-200 rounded-md shadow sm:max-w-lg md:flex-row md:max-w-full opacity-90 dark:border-gray-700 dark:bg-gray-800"
+            className="flex flex-col max-w-sm bg-white border border-gray-200 rounded-md shadow sm:max-w-lg md:flex-row md:max-w-full  max-h-full md:max-h-[18rem] opacity-90 dark:border-gray-700 dark:bg-gray-800"
             >
             <div className="relative flex h-auto overflow-hidden justify-evenly group">
               <img
