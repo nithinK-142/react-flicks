@@ -22,7 +22,7 @@ const ShowList: React.FC = () => {
         {shows.map((show) => (
           <li
             key={show.id}
-            className="flex min--[8rem] flex-col items-center bg-white border border-gray-200 rounded-md shadow md:flex-row md:max-wmd hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+            className="flex flex-col items-center max-w-sm bg-white border border-gray-200 rounded-md shadow sm:max-w-lg md:flex-row md:max-w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
           >
             {/* <Link to={`${show.id}`}> */}
             <img
@@ -41,7 +41,7 @@ const ShowList: React.FC = () => {
               <div className="flex justify-end pr-4">
                 <button
                   onClick={() => setShowId(show.id)}
-                  className="px-4 py-1 text-blue-500 rounded-lg hover:bg-red-400 hover:text-white"
+                  className="px-4 py-1 text-blue-500 rounded-lg hover:bg-white/80 hover:text-black"
                 >
                   Read More
                 </button>
@@ -51,7 +51,7 @@ const ShowList: React.FC = () => {
         ))}
       </ul>
 
-      <div className="w-full sm:w-[50vw] md:w-[45vw] bg-gray-800 md:mr-2 md:scroller">
+      <div className="md:w-[45vw] bg-gray-800 md:mr-2 md:scroller hidden md:block">
         <ShowInfo showId={showId} />
       </div>
     </div>
