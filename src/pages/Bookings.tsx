@@ -37,9 +37,9 @@ const Bookings = () => {
             key={index}
             className="flex mb-4 bg-white border border-gray-200 rounded-md shadow dark:bg-gray-800 dark:border-gray-700"
           >
-            <div className="relative flex items-stretch h-auto justify-evenly group">
+            <div className="relative flex h-auto overflow-hidden justify-evenly group">
               <img
-                className="object-cover w-full transition-all duration-500 rounded-t-lg group-hover:scale-105 group-hover:opacity-35"
+                className="object-cover w-full transition-all duration-500 rounded-t-lg hover:scale-110 group-hover:opacity-35"
                 src={
                   booking.image && booking.image.medium
                     ? booking.image.medium
@@ -47,7 +47,7 @@ const Bookings = () => {
                 }
                 alt={booking.showName}
               />
-              <div className="absolute hidden pt-6 space-y-4 group-hover:block">
+              <div className="absolute pt-6 space-y-4 transition-opacity duration-700 opacity-0 group-hover:opacity-100">
                 <p>
                   Language :{" "}
                   <span className="opacity-90">{booking.language} </span>
