@@ -41,7 +41,7 @@ const ShowList: React.FC = () => {
               <div className="flex justify-end pr-4">
                 <button
                   onClick={() => setShowId(show.id)}
-                  className="px-4 py-1 text-blue-500 rounded-lg hover:bg-white/80 hover:text-black"
+                  className="px-4 py-1 text-blue-500 transition-colors duration-500 rounded-lg hover:bg-white/80 hover:text-black"
                 >
                   Read More
                 </button>

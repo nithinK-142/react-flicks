@@ -14,7 +14,7 @@ const ShowInfo = ({ showId }: { showId: number }) => {
 
   return (
     <div className="flex flex-col items-start justify-start bg-white border border-gray-200 rounded-md shadow dark:bg-gray-800 dark:border-gray-700">
-      <div className="flex flex-col-reverse justify-between xl:flex-row">
+      <div className="flex flex-col-reverse justify-between mb-2 xl:flex-row">
         <div className="flex flex-col pt-2 pl-3 pr-1 space-y-3">
           <h5 className="mb-2 text-2xl font-bold tracking-wide text-gray-900 dark:text-white">
             {show.name}
@@ -103,9 +103,9 @@ const ShowInfo = ({ showId }: { showId: number }) => {
           </Link>
         </div>
       </div>
-      <div className="p-3 pr-0 m-2 mr-0 bg-gray-900 rounded-md shadow-sm shadow-white/70">
+      <div className="p-3 m-2 mr-0 bg-gray-900 rounded-md shadow shadow-white/70">
         <h3 className="tracking-widest text-center">SUMMARY</h3>
-        <p className="font-normal text-gray-700 dark:text-white/90 line-clamp-[14]">
+        <p className="font-normal text-gray-700 dark:text-white/90">
           {sanitizedSummary(show.summary)}
         </p>
       </div>
