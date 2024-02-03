@@ -13,7 +13,7 @@ const ShowInfo = ({ showId }: { showId: number }) => {
   if (!show) return <NotFound />;
 
   return (
-    <div className="flex flex-col items-start justify-start min-h-screen bg-white border border-gray-200 rounded-md shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="flex flex-col items-start justify-start bg-white border border-gray-200 rounded-md shadow dark:bg-gray-800 dark:border-gray-700">
       <div className="flex flex-col-reverse justify-between xl:flex-row">
         <div className="flex flex-col pt-2 pl-3 pr-1 space-y-3">
           <h5 className="mb-2 text-2xl font-bold tracking-wide text-gray-900 dark:text-white">
