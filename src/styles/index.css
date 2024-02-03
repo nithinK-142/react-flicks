@@ -40,7 +40,7 @@ p {
   }
 
   /* Firefox */
-  .floating-scrollbar {
+  .floating-scrollbar,.scroller {
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
   }
