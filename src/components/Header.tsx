@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 const Header = () => {
   const isBookings = useLocation().pathname === "/bookings";
   return (
-    <div className="flex items-center justify-between w-full my-3 bg-gray-900/40">
+    <div className="flex items-center w-full py-3 justify-evenly md:justify-between bg-gray-900/40">
       <div className="pl-10">
         <Link to={"/"}>
           <h1 className="text-2xl font-semibold tracking-wider text-center">
@@ -10,7 +10,7 @@ const Header = () => {
           </h1>
         </Link>
       </div>
-      {isBookings && <h1 className="text-2xl md:pl-12">Bookings</h1>}
+      {isBookings && <h1 className="hidden text-2xl md:block md:pl-12">Bookings</h1>}
       <div className="flex space-x-10 md:pr-52">
         <Link to={"/"}>
           <svg
