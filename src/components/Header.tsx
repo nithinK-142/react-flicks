@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 const Header = () => {
   return (
-    <div className="h-[8vh] flex items-center justify-between w-full bg-gray-900/40 mb-1">
+    <div className="flex items-center justify-between w-full my-3 bg-gray-900/40">
       <div className="pl-10">
         <Link to={"/"}>
           <h1 className="text-2xl font-semibold tracking-wider text-center">React Flicks</h1>
