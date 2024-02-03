@@ -54,7 +54,9 @@ const Bookings = () => {
                       Language :{" "}
                       <span className="opacity-90">{booking.language} </span>
                     </p>
-                    <p>Rating: {booking.rating.average} / 10 </p>
+                    {booking.rating.average !== null && (
+                      <p>Rating: {booking.rating.average} / 10 </p>
+                    )}
                     <p>
                       Genre:{" "}
                       {booking.genres.map((genre, idx) => (

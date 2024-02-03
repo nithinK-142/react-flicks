@@ -131,7 +131,9 @@ const ShowInfo: React.FC = () => {
             </span>
           ))}
         </p>
-        <p>Rating: {show.rating.average} / 10 </p>
+        {show.rating.average !== null && (
+          <p className="opacity-90">Rating: {show.rating.average} / 10 </p>
+        )}
         {show.officialSite && (
           <p>
             Site:{" "}
