@@ -43,7 +43,7 @@ const Bookings = () => {
                 src={
                   booking.image && booking.image.medium
                     ? booking.image.medium
-                    : "/nope-not-here.jpg"
+                    : "/not-found.jpg"
                 }
                 alt={booking.showName}
               />

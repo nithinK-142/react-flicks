@@ -77,7 +77,7 @@ const ShowInfo = ({ showId }: { showId: number }) => {
         <div className="flex flex-col items-center">
           <img
             className="object-cover rounded-t-lg md:w-80"
-            src={show.image ? show.image.medium : "/nope-not-here.jpg"}
+            src={show.image ? show.image.medium : "/not-found.jpg"}
             alt={show.name}
           />
           <Link

@@ -88,7 +88,7 @@ const ShowInfo: React.FC = () => {
       <div className="flex justify-end w-1/2 h-auto">
         <img
           className="object-cover w-1/2 rounded-t-lg"
-          src={show.image ? show.image.medium : "/nope-not-here.jpg"}
+          src={show.image ? show.image.medium : "/not-found.jpg"}
           alt={show.name}
         />
       </div>
@@ -161,7 +161,7 @@ const ShowInfo: React.FC = () => {
               <div className="flex w-full h-auto pr-4">
                 <img
                   className="object-cover w-full rounded-t-lg"
-                  src={show.image ? show.image.medium : "/nope-not-here.jpg"}
+                  src={show.image ? show.image.medium : "/not-found.jpg"}
                   alt={show.name}
                 />
               </div>

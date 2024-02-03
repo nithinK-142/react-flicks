@@ -27,7 +27,7 @@ const ShowList: React.FC = () => {
             {/* <Link to={`${show.id}`}> */}
             <img
               className="object-cover w-full rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
-              src={show.image ? show.image.medium : "/nope-not-here.jpg"}
+              src={show.image ? show.image.medium : "/not-found.jpg"}
               alt={show.name}
             />
             {/* </Link> */}
