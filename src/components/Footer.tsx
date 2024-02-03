@@ -1,5 +1,10 @@
 const Footer = () => {
-  return <h2 className="mt-2 text-xl text-center opacity-50 bg-red400">Footer</h2>;
+  const year = new Date().getFullYear();
+  return (
+    <h2 className="mt-2 text-base font-thin tracking-wider text-center opacity-50 ">
+      React Flicks {year} All Rights Reserved.
+    </h2>
+  );
 };
 
 export default Footer;
