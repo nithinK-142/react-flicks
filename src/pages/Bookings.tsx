@@ -43,7 +43,7 @@ const Bookings = () => {
                   <img
                     className="object-cover w-full transition-all duration-500 rounded-t-lg group-hover:scale-105 group-hover:opacity-35"
                     src={
-                      booking.image
+                      booking.image && booking.image.medium
                         ? booking.image.medium
                         : "/nope-not-here.jpg"
                     }
