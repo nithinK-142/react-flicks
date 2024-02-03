@@ -25,16 +25,19 @@ const Bookings = () => {
   }, []);
 
   return (
-    <div>
-      <h1 className="text-3xl text-center">Bookings</h1>
-      {bookings.length === 0 && <h2 className="pt-10 text-xl text-center opacity-70">No bookings available...</h2>}
+    <div className="relative">
+      {bookings.length === 0 && (
+        <h2 className="pt-10 text-xl text-center opacity-70">
+          No bookings available...
+        </h2>
+      )}
       <div className="grid grid-cols-1 gap-4 p-6 md:grid-cols-2 lg:grid-cols-3">
         {bookings.map((bookingArray, index) => (
           <div key={index}>
             {bookingArray.map((booking, bookingIndex) => (
               <div
                 key={bookingIndex}
-                className="flex mb-4 bg-white border border-gray-200 rounded-md shadow dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-gray-700"
+                className="flex mb-4 bg-white border border-gray-200 rounded-md shadow dark:bg-gray-800 dark:border-gray-700"
               >
                 <div className="relative flex items-stretch h-auto justify-evenly group">
                   <img
