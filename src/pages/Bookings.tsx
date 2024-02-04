@@ -56,7 +56,7 @@ const Bookings = () => {
                   <p>Rating: {booking.rating.average} / 10 </p>
                 )}
                 <p>
-                  Genre:{" "}
+                  Genre :{" "}
                   {booking.genres.map((genre, idx) => (
                     <span key={idx} className="opacity-90">
                       {genre}

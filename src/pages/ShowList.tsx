@@ -12,7 +12,7 @@ import { SHOWS_URL } from "@/utils/constants";
 
 const ShowList: React.FC = () => {
   const { shows, loading } = useFetchShows(SHOWS_URL);
-  const [showId, setShowId] = useState<number>(42181);
+  const [showId, setShowId] = useState<number>(15299);
 
   if (loading) return <Loading />;
 
@@ -51,7 +51,7 @@ const ShowList: React.FC = () => {
         ))}
       </ul>
 
-      <div className="md:w-[45vw] bg-gray-800 md:mr-2 md:scroller hidden md:block">
+      <div className="md:w-[45vw] bg-gray-800 md:scroller hidden md:block">
         <ShowInfo showId={showId} />
       </div>
     </div>

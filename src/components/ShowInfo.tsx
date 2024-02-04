@@ -1,4 +1,4 @@
-import { sanitizedSummary } from "@/utils/utils";
+import { dotLink, sanitizedSummary } from "@/utils/utils";
 import useFetchShows from "@/hooks/useFetchShows";
 import NotFound from "@/pages/NotFound";
 import Loading from "@/pages/Loading";
@@ -21,7 +21,7 @@ const ShowInfo = ({ showId }: { showId: number }) => {
           </h5>
           {show.network?.name && (
             <p className="flex space-x-1">
-              Network:{" "}
+              Network :{" "}
               <span className="pl-1">
                 <img
                   src={`https://flagsapi.com/${show.network.country.code}/flat/64.png`}
@@ -33,21 +33,26 @@ const ShowInfo = ({ showId }: { showId: number }) => {
           )}
           {show.schedule.days.length !== 0 && (
             <p>
-              Schedule:{" "}
+              Schedule :{" "}
               <span className="opacity-90">
-                {show.schedule.days}s at {show.schedule.time} ({show.runtime}{" "}
-                min){" "}
+                {show.schedule.days}s{" "}
+                {show.schedule.time && (
+                  <span>
+                    {" "}
+                    at {show.schedule.time} ({show.runtime} min){" "}
+                  </span>
+                )}
               </span>
             </p>
           )}
           <p>
-            Status: <span className="opacity-90">{show.status}</span>{" "}
+            Status : <span className="opacity-90">{show.status}</span>{" "}
           </p>
           <p>
-            Show Type: <span className="opacity-90">{show.type}</span>{" "}
+            Show Type : <span className="opacity-90">{show.type}</span>{" "}
           </p>
           <p>
-            Genre:{" "}
+            Genre :{" "}
             {show.genres.map((genre, idx) => (
               <span key={idx} className="opacity-90">
                 {genre}
@@ -56,18 +61,19 @@ const ShowInfo = ({ showId }: { showId: number }) => {
             ))}
           </p>
           {show.rating.average !== null && (
-            <p className="opacity-90">Rating: {show.rating.average} / 10 </p>
+            <p className="opacity-90">Rating : {show.rating.average} / 10 </p>
           )}
           {show.officialSite && (
             <p>
-              Site:{" "}
+              Site :{" "}
+              <span>
               <a
                 href={show.officialSite}
                 target="_blank"
                 className="text-blue-300 opacity-90 hover:underline"
               >
-                {show.officialSite}
-              </a>
+                {dotLink(show.officialSite)}
+              </a></span>
             </p>
           )}
           <p>
