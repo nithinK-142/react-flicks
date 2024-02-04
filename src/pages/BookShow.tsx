@@ -11,7 +11,6 @@ import { SHOW_URL } from "@/utils/constants";
 import { UserDataType } from "@/utils/types";
 import NotFound from "./NotFound";
 import Loading from "./Loading";
-import "reactjs-popup/dist/index.css";
 
 const ShowInfo: React.FC = () => {
   const { id } = useParams<{ id: string }>();
