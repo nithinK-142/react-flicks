@@ -1,17 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @font-face {
   font-family: "Lato";
   font-weight: 400;
   src: url("../fonts/Lato-Regular.ttf") format("opentype");
 }
+
 @font-face {
   font-family: "Kanit";
   font-weight: 100;
   src: url("../fonts/Kanit-Thin.ttf") format("opentype");
 }
+
 @font-face {
   font-family: "Kanit";
   font-weight: 400;
@@ -23,6 +21,7 @@
   font-weight: 500;
   src: url("../fonts/Kanit-Medium.ttf") format("opentype");
 }
+
 @font-face {
   font-family: "Kanit";
   font-weight: 600;
@@ -34,6 +33,10 @@
   font-weight: 700;
   src: url("../fonts/Kanit-Bold.ttf") format("opentype");
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 p {
   @apply font-lato;
