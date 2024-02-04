@@ -84,7 +84,7 @@ const ShowInfo: React.FC = () => {
   if (!shows) return <NotFound />;
 
   return (
-    <div className="flex items-start justify-center h-[80vh] bg-white border border-gray-200 rounded-md shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className={`flex items-start justify-center h-[80vh] rounded-md transition-colors duration-700 shadow ${visible ? 'bg-[#1e1e1e]': 'dark:bg-gray-800 dark:border-gray-700'}`}>
       <div className="flex justify-end w-1/2 h-auto">
         <img
           className="object-cover w-1/2 rounded-t-lg"
