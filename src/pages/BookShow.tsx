@@ -1,7 +1,8 @@
 // Library imports
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Popup from "reactjs-popup";
+import { Button } from "primereact/button";
+import { Dialog } from "primereact/dialog";
 import toast from "react-hot-toast";
 
 // Relative imports
@@ -15,7 +16,7 @@ import "reactjs-popup/dist/index.css";
 const ShowInfo: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { shows, loading } = useFetchShows(SHOW_URL + `${id}`);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [visible, setVisible] = useState<boolean>(false);
   const [isFormFilled, setIsFormFilled] = useState<boolean>(false);
 
   const [userData, setUserData] = useState<UserDataType>({
@@ -38,7 +39,7 @@ const ShowInfo: React.FC = () => {
   const handleClose = () => {
     if (!isFormFilled) return toast.error("Fields must not be empty!");
 
-    setIsOpen(false);
+    setVisible(false);
     toast.success("Payment successful!");
 
     localStorage.setItem(
@@ -111,15 +112,15 @@ const ShowInfo: React.FC = () => {
         {show.schedule.days.length !== 0 && (
           <p>
             Schedule :{" "}
-              <span className="opacity-90">
-                {show.schedule.days}s{" "}
-                {show.schedule.time && (
-                  <span>
-                    {" "}
-                    at {show.schedule.time} ({show.runtime} min){" "}
-                  </span>
-                )}
-              </span>
+            <span className="opacity-90">
+              {show.schedule.days}s{" "}
+              {show.schedule.time && (
+                <span>
+                  {" "}
+                  at {show.schedule.time} ({show.runtime} min){" "}
+                </span>
+              )}
+            </span>
           </p>
         )}
         <p>
@@ -155,12 +156,15 @@ const ShowInfo: React.FC = () => {
         <p>
           Language : <span className="opacity-90">{show.language} </span>
         </p>
-
-        <Popup
-          open={isOpen}
-          onClose={handleClose}
-          modal
-          closeOnDocumentClick={false}
+        <Button
+          label="Book Now!"
+          onClick={() => setVisible(true)}
+          className="w-1/2 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 "
+        />
+        <Dialog
+          visible={visible}
+          onHide={() => setVisible(false)}
+          className="lg:w-[55vw] text-white"
         >
           <div className="w-full bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
             <div className="flex justify-center">
@@ -293,13 +297,7 @@ const ShowInfo: React.FC = () => {
               </div>
             </div>
           </div>
-        </Popup>
-        <button
-          onClick={() => setIsOpen(true)}
-          className="w-1/2 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 "
-        >
-          Book Now!
-        </button>
+        </Dialog>
       </div>
     </div>
   );
