@@ -11,6 +11,7 @@ import { SHOW_URL } from "@/utils/constants";
 import { UserDataType } from "@/utils/types";
 import NotFound from "./NotFound";
 import Loading from "./Loading";
+import { dotLink } from "@/utils/utils";
 
 const ShowInfo: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -32,6 +33,9 @@ const ShowInfo: React.FC = () => {
     else setIsFormFilled(false);
   }, [userData]);
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUserData({ ...userData, [e.target.name]: e.target.value });
+  };
   const show = shows[0];
   const navigate = useNavigate();
 
@@ -84,7 +88,11 @@ const ShowInfo: React.FC = () => {
   if (!shows) return <NotFound />;
 
   return (
-    <div className={`flex items-start justify-center h-[80vh] rounded-md transition-colors duration-700 shadow ${visible ? 'bg-[#1e1e1e]': 'dark:bg-gray-800 dark:border-gray-700'}`}>
+    <div
+      className={`flex items-start justify-center h-[80vh] rounded-md transition-colors duration-700 shadow ${
+        visible ? "bg-[#1e1e1e]" : "dark:bg-gray-800 dark:border-gray-700"
+      }`}
+    >
       <div className="flex justify-end w-1/2 h-auto">
         <img
           className="object-cover w-1/2 rounded-t-lg"
@@ -143,13 +151,15 @@ const ShowInfo: React.FC = () => {
         {show.officialSite && (
           <p>
             Site :{" "}
-            <a
-              href={show.officialSite}
-              target="_blank"
-              className="text-blue-300 opacity-90 hover:underline"
-            >
-              {show.officialSite}
-            </a>
+            <span>
+              <a
+                href={show.officialSite}
+                target="_blank"
+                className="text-blue-300 opacity-90 hover:underline"
+              >
+                {dotLink(show.officialSite)}
+              </a>
+            </span>
           </p>
         )}
         <p>
@@ -188,10 +198,8 @@ const ShowInfo: React.FC = () => {
                     </label>
                     <input
                       type="text"
-                      onChange={(e) =>
-                        setUserData({ ...userData, name: e.target.value })
-                      }
                       name="name"
+                      onChange={(e) => handleChange(e)}
                       id="name"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                       placeholder="jhon smith"
@@ -207,10 +215,8 @@ const ShowInfo: React.FC = () => {
                     </label>
                     <input
                       type="email"
-                      onChange={(e) =>
-                        setUserData({ ...userData, email: e.target.value })
-                      }
                       name="email"
+                      onChange={(e) => handleChange(e)}
                       id="email"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                       placeholder="name@company.com"
@@ -227,10 +233,8 @@ const ShowInfo: React.FC = () => {
                     </label>
                     <input
                       type="number"
-                      onChange={(e) =>
-                        setUserData({ ...userData, seats: e.target.value })
-                      }
-                      name="seat"
+                      name="seats"
+                      onChange={(e) => handleChange(e)}
                       id="seat"
                       min="1"
                       max="99"
@@ -248,10 +252,8 @@ const ShowInfo: React.FC = () => {
                     </label>
                     <input
                       type="date"
-                      onChange={(e) =>
-                        setUserData({ ...userData, date: e.target.value })
-                      }
                       name="date"
+                      onChange={(e) => handleChange(e)}
                       id="date"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                       required

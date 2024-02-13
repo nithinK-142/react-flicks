@@ -3,11 +3,10 @@ import useFetchShows from "@/hooks/useFetchShows";
 import NotFound from "@/pages/NotFound";
 import Loading from "@/pages/Loading";
 import { Link } from "react-router-dom";
+import { SHOW_URL } from "@/utils/constants";
 
 const ShowInfo = ({ showId }: { showId: number }) => {
-  const { shows, loading } = useFetchShows(
-    `https://api.tvmaze.com/shows/${showId}`
-  );
+  const { shows, loading } = useFetchShows(SHOW_URL + `${showId}`);
   const show = shows[0];
   if (loading) return <Loading bg="bg-gray-800" />;
   if (!show) return <NotFound />;
@@ -67,13 +66,14 @@ const ShowInfo = ({ showId }: { showId: number }) => {
             <p>
               Site :{" "}
               <span>
-              <a
-                href={show.officialSite}
-                target="_blank"
-                className="text-blue-300 opacity-90 hover:underline"
-              >
-                {dotLink(show.officialSite)}
-              </a></span>
+                <a
+                  href={show.officialSite}
+                  target="_blank"
+                  className="text-blue-300 opacity-90 hover:underline"
+                >
+                  {dotLink(show.officialSite)}
+                </a>
+              </span>
             </p>
           )}
           <p>

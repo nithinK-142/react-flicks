@@ -4,15 +4,17 @@ const Header = () => {
   return (
     <div className="flex items-center w-full py-3 justify-evenly md:justify-between bg-gray-900/40">
       <div className="pl-10">
-        <Link to={"/"}>
+        <Link to="/">
           <h1 className="text-2xl font-semibold tracking-wider text-center">
             React Flicks
           </h1>
         </Link>
       </div>
-      {isBookings && <h1 className="hidden text-2xl md:block md:pl-12">Bookings</h1>}
+      {isBookings && (
+        <h1 className="hidden text-2xl md:block md:pl-12">Bookings</h1>
+      )}
       <div className="flex space-x-10 md:pr-52">
-        <Link to={"/"}>
+        <Link to="/">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 fill-white"
@@ -22,7 +24,7 @@ const Header = () => {
           </svg>
         </Link>
 
-        <Link to={"/bookings"}>
+        <Link to="bookings">
           <svg
             viewBox="0 0 1.44 1.44"
             xmlns="http://www.w3.org/2000/svg"

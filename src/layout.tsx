@@ -7,7 +7,7 @@ export const Layout = () => {
   return (
     <>
       <Toaster />
-      <main className="flex flex-col justify-between h-screen bg-[#1e1e1e] text-white font-kanit">
+      <main className="flex flex-col justify-between h-screen text-white font-kanit">
         <Header />
         <Outlet />
         <Footer />

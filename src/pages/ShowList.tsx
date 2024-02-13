@@ -10,7 +10,7 @@ import ShowInfo from "@/components/ShowInfo";
 import { sanitizedSummary } from "@/utils/utils";
 import { SHOWS_URL } from "@/utils/constants";
 
-const ShowList: React.FC = () => {
+const ShowList = () => {
   const { shows, loading } = useFetchShows(SHOWS_URL);
   const [showId, setShowId] = useState<number>(15299);
 
@@ -24,13 +24,11 @@ const ShowList: React.FC = () => {
             key={show.id}
             className="flex flex-col items-center max-w-sm bg-white border border-gray-200 rounded-md shadow sm:max-w-lg md:flex-row md:max-w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
           >
-            {/* <Link to={`${show.id}`}> */}
             <img
               className="object-cover w-full rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
               src={show.image ? show.image.medium : "/not-found.jpg"}
               alt={show.name}
             />
-            {/* </Link> */}
             <div className="flex flex-col justify-between p-4 leading-normal">
               <h5 className="mb-2 text-2xl font-medium tracking-tight text-gray-900 dark:text-white/90">
                 {show.name}{" "}
