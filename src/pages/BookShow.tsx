@@ -11,11 +11,11 @@ import { UserDataType } from "@/utils/types";
 import NotFound from "./NotFound";
 import Loading from "./Loading";
 import { dotLink } from "@/utils/utils";
-import { useGetShow } from "@/hooks/useGetShow";
+import { useFetchShowById } from "@/hooks/useShows";
 
 const ShowInfo: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { show, loading } = useGetShow(SHOW_URL + id);
+  const { data: show, isLoading } = useFetchShowById(SHOW_URL + id);
   const [visible, setVisible] = useState<boolean>(false);
   const [isFormFilled, setIsFormFilled] = useState<boolean>(false);
 
@@ -86,7 +86,7 @@ const ShowInfo: React.FC = () => {
     navigate("/");
   };
 
-  if (loading) return <Loading />;
+  if (isLoading) return <Loading />;
   if (!show) return <NotFound />;
 
   return (

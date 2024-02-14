@@ -3,12 +3,11 @@ import NotFound from "@/pages/NotFound";
 import Loading from "@/pages/Loading";
 import { Link } from "react-router-dom";
 import { SHOW_URL } from "@/utils/constants";
-import { useGetShow } from "@/hooks/useGetShow";
+import { useFetchShowById } from "@/hooks/useShows";
 
 const ShowInfo = ({ showId }: { showId: number }) => {
-  const { show, loading } = useGetShow(SHOW_URL + `${showId}`);
-
-  if (loading) return <Loading bg="bg-gray-800" />;
+  const { data: show, isLoading } = useFetchShowById(SHOW_URL + `${showId}`);
+  if (isLoading) return <Loading bg="bg-gray-800" />;
   if (!show) return <NotFound />;
 
   return (

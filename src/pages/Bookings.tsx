@@ -5,9 +5,11 @@ const Bookings = () => {
   const { bookings } = useLocalStorage();
 
   if (bookings.length === 0) {
-    <h2 className="pt-10 text-xl text-center opacity-70">
-      No bookings available...
-    </h2>;
+    return (
+      <h2 className="pt-10 text-xl text-center opacity-70">
+        No bookings available...
+      </h2>
+    );
   }
 
   return (

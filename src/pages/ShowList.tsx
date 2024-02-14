@@ -2,17 +2,20 @@
 import { useState } from "react";
 
 // Relative imports
-import { useFetchShows } from "@/hooks/useFetchShows";
+import { useFetchShows } from "@/hooks/useShows";
 import Loading from "./Loading";
+import NotFound from "./NotFound";
 import ShowInfo from "@/components/ShowInfo";
 
 // Utility imports
 import { sanitizedSummary } from "@/utils/utils";
 
 const ShowList = () => {
-  const { shows, isLoading } = useFetchShows();
+  const { data: shows, isLoading } = useFetchShows();
   const [showId, setShowId] = useState<number>(15299);
 
+  console.log(shows);
+  if (shows?.length === 0) return <NotFound />;
   if (isLoading) return <Loading />;
 
   return (
