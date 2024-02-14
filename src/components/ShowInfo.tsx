@@ -1,4 +1,4 @@
-import { dotLink, sanitizedSummary } from "@/utils/utils";
+import { dotLink, getFlagUrl, sanitizedSummary } from "@/utils/utils";
 import NotFound from "@/pages/NotFound";
 import Loading from "@/pages/Loading";
 import { Link } from "react-router-dom";
@@ -22,7 +22,7 @@ const ShowInfo = ({ showId }: { showId: number }) => {
               Network :{" "}
               <span className="pl-1">
                 <img
-                  src={`https://flagsapi.com/${show.network.country.code}/flat/64.png`}
+                  src={getFlagUrl(show.network.country.code)}
                   className="h-6 "
                 />
               </span>

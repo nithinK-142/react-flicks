@@ -10,7 +10,7 @@ import { SHOW_URL } from "@/utils/constants";
 import { UserDataType } from "@/utils/types";
 import NotFound from "./NotFound";
 import Loading from "./Loading";
-import { dotLink } from "@/utils/utils";
+import { dotLink, getFlagUrl } from "@/utils/utils";
 import { useFetchShowById } from "@/hooks/useShows";
 
 const ShowInfo: React.FC = () => {
@@ -111,7 +111,7 @@ const ShowInfo: React.FC = () => {
             Network :{" "}
             <span className="pl-1">
               <img
-                src={`https://flagsapi.com/${show.network.country.code}/flat/64.png`}
+                src={getFlagUrl(show.network.country.code)}
                 className="h-6 "
               />
             </span>
