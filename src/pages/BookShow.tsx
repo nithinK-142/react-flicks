@@ -11,7 +11,7 @@ import { UserDataType } from "@/utils/types";
 import NotFound from "./NotFound";
 import Loading from "./Loading";
 import { dotLink } from "@/utils/utils";
-import useGetShow from "@/hooks/useGetShow";
+import { useGetShow } from "@/hooks/useGetShow";
 
 const ShowInfo: React.FC = () => {
   const { id } = useParams<{ id: string }>();

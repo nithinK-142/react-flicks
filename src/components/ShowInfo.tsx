@@ -3,7 +3,7 @@ import NotFound from "@/pages/NotFound";
 import Loading from "@/pages/Loading";
 import { Link } from "react-router-dom";
 import { SHOW_URL } from "@/utils/constants";
-import useGetShow from "@/hooks/useGetShow";
+import { useGetShow } from "@/hooks/useGetShow";
 
 const ShowInfo = ({ showId }: { showId: number }) => {
   const { show, loading } = useGetShow(SHOW_URL + `${showId}`);

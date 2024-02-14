@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 // Relative imports
-import useFetchShows from "@/hooks/useFetchShows";
+import { useFetchShows } from "@/hooks/useFetchShows";
 import Loading from "./Loading";
 import ShowInfo from "@/components/ShowInfo";
 

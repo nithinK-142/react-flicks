@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 import { Show } from "@/utils/types";
 import { SHOWS_URL } from "@/utils/constants";
 
-const useFetchShows = () => {
+export function useFetchShows() {
   const { data: shows, isLoading } = useQuery<Show[]>("shows", async () => {
     try {
       const response = await axios.get(SHOWS_URL);
@@ -18,6 +18,4 @@ const useFetchShows = () => {
   });
 
   return { shows, isLoading };
-};
-
-export default useFetchShows;
+}
