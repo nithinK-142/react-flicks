@@ -1,13 +1,13 @@
 import { dotLink, sanitizedSummary } from "@/utils/utils";
-import useFetchShows from "@/hooks/useFetchShows";
 import NotFound from "@/pages/NotFound";
 import Loading from "@/pages/Loading";
 import { Link } from "react-router-dom";
 import { SHOW_URL } from "@/utils/constants";
+import useGetShow from "@/hooks/useGetShow";
 
 const ShowInfo = ({ showId }: { showId: number }) => {
-  const { shows, loading } = useFetchShows(SHOW_URL + `${showId}`);
-  const show = shows[0];
+  const { show, loading } = useGetShow(SHOW_URL + `${showId}`);
+
   if (loading) return <Loading bg="bg-gray-800" />;
   if (!show) return <NotFound />;
 

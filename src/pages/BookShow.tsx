@@ -6,16 +6,16 @@ import { Dialog } from "primereact/dialog";
 import toast from "react-hot-toast";
 
 // Relative imports
-import useFetchShows from "@/hooks/useFetchShows";
 import { SHOW_URL } from "@/utils/constants";
 import { UserDataType } from "@/utils/types";
 import NotFound from "./NotFound";
 import Loading from "./Loading";
 import { dotLink } from "@/utils/utils";
+import useGetShow from "@/hooks/useGetShow";
 
 const ShowInfo: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { shows, loading } = useFetchShows(SHOW_URL + `${id}`);
+  const { show, loading } = useGetShow(SHOW_URL + id);
   const [visible, setVisible] = useState<boolean>(false);
   const [isFormFilled, setIsFormFilled] = useState<boolean>(false);
 
@@ -36,7 +36,7 @@ const ShowInfo: React.FC = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
-  const show = shows[0];
+
   const navigate = useNavigate();
 
   const handleClose = () => {
@@ -45,47 +45,49 @@ const ShowInfo: React.FC = () => {
     setVisible(false);
     toast.success("Payment successful!");
 
-    localStorage.setItem(
-      show.id.toString(),
-      JSON.stringify([
-        {
-          username: userData.name,
-          email: userData.email,
-          seats: userData.seats,
-          date: userData.date,
-          image: {
-            medium: show.image?.medium || "",
-          },
-          showName: show.name,
-          id: show.id,
-          network: {
-            name: show.network?.name || "",
-            country: {
-              code: show.network?.country.code || "",
+    if (show) {
+      localStorage.setItem(
+        show.id.toString(),
+        JSON.stringify([
+          {
+            username: userData.name,
+            email: userData.email,
+            seats: userData.seats,
+            date: userData.date,
+            image: {
+              medium: show.image?.medium || "",
             },
+            showName: show.name,
+            id: show.id,
+            network: {
+              name: show.network?.name || "",
+              country: {
+                code: show.network?.country.code || "",
+              },
+            },
+            schedule: {
+              days: show.schedule.days,
+              time: show.schedule.time,
+            },
+            runtime: show.runtime,
+            status: show.status,
+            type: show.type,
+            genres: show.genres,
+            rating: {
+              average: show.rating.average,
+            },
+            officialSite: show.officialSite || "",
+            language: show.language,
           },
-          schedule: {
-            days: show.schedule.days,
-            time: show.schedule.time,
-          },
-          runtime: show.runtime,
-          status: show.status,
-          type: show.type,
-          genres: show.genres,
-          rating: {
-            average: show.rating.average,
-          },
-          officialSite: show.officialSite || "",
-          language: show.language,
-        },
-      ])
-    );
+        ])
+      );
+    }
 
     navigate("/");
   };
 
   if (loading) return <Loading />;
-  if (!shows) return <NotFound />;
+  if (!show) return <NotFound />;
 
   return (
     <div

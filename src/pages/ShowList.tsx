@@ -8,18 +8,17 @@ import ShowInfo from "@/components/ShowInfo";
 
 // Utility imports
 import { sanitizedSummary } from "@/utils/utils";
-import { SHOWS_URL } from "@/utils/constants";
 
 const ShowList = () => {
-  const { shows, loading } = useFetchShows(SHOWS_URL);
+  const { shows, isLoading } = useFetchShows();
   const [showId, setShowId] = useState<number>(15299);
 
-  if (loading) return <Loading />;
+  if (isLoading) return <Loading />;
 
   return (
     <div className="flex flex-col justify-between md:flex-row md:h-full md:scroller">
       <ul className="grid w-full h-full grid-cols-1 gap-3 pl-2 md:floating-scrollbar lg:grid-cols-2 3xl:grid-cols-3">
-        {shows.map((show) => (
+        {shows?.map((show) => (
           <li
             key={show.id}
             className="flex flex-col items-center max-w-sm bg-white border border-gray-200 rounded-md shadow sm:max-w-lg md:flex-row md:max-w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"

@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+
 const Header = () => {
   const isBookings = useLocation().pathname === "/bookings";
   return (
